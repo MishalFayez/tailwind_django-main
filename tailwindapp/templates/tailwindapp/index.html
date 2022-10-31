@@ -198,42 +198,52 @@
         <div class="flex flex-col gap-y-5 bg-white rounded shadow p-5">
             <h1 class="font-semibold text-lg">My Projects</h1>
             <div class="flex items-center justify-center mb-6 flex-col lg:flex-row gap-x-4">
-                <div class="mb-5">
+                {% for project in projects %}
+                <a href="{% url 'getProjects' project.slug %}">
+                    <div class="mb-5">
                     <div class="pb-[55%] relative max-w-sm">
-                        <img src="img/1666191787442.jpeg" alt=""
+                        <img src="{{project.image}}" alt=""
                             class="absolute top-0 w-full h-64 object-cover rounded-lg shadow-md">
                     </div>
                     <div class="px-4 mt-4 relative max-w-sm">
                         <div class="bg-white p-6 rounded-lg shadow-lg">
-                            <div class="flex items-baseline">
-                                <span class="inline-block text-sm px-2 rounded-full bg-indigo-200 text-indigo-800">
-                                    NEW
+                            <div class="items-baseline">
+                                {% for type in project.type.all %}
+                                {% if type.name == 'Odoo' %}
+                                <span class="inline-block text-sm px-2 rounded-full bg-fuchsia-200 text-fuchsia-800">
+                                    {{type.name}}
                                 </span>
+                                {% elif type.name == 'XML' %}
+                                <span class="inline-block text-sm px-2 rounded-full bg-blue-200 text-blue-800">
+                                    {{type.name}}
+                                </span>
+                                {% elif type.name == 'Python' %}
+                                <span class="inline-block text-sm px-2 rounded-full bg-amber-200 text-amber-800">
+                                    {{type.name}}
+                                </span>
+                                {% elif type.name == 'Django' %}
+                                <span class="inline-block text-sm px-2 rounded-full bg-emerald-200 text-emerald-800">
+                                    {{type.name}}
+                                </span>
+                                {% elif type.name == 'Cybersecurity' %}
+                                <span class="inline-block text-sm px-2 rounded-full bg-sky-200 text-sky-800">
+                                    {{type.name}}
+                                </span>
+                                {% endif %}
+
+                                {% endfor %}
                             </div>
                             <h4 class="mt-2 font-semibold text-lg leading-tight">
-                                Jeddah city in red sea mall with family and friends
+                                {{project.title}}
                             </h4>
-                        </div>
-                    </div>
-                </div>
-                <div class="mb-5">
-                    <div class="pb-[55%] relative max-w-sm">
-                        <img src="img/1666191787442.jpeg" alt=""
-                            class="absolute top-0 w-full h-64 object-cover rounded-lg shadow-md">
-                    </div>
-                    <div class="px-4 mt-4 relative max-w-sm">
-                        <div class="bg-white p-6 rounded-lg shadow-lg">
-                            <div class="flex items-baseline">
-                                <span class="inline-block text-sm px-2 rounded-full bg-indigo-200 text-indigo-800">
-                                    NEW
-                                </span>
+                            <div class="flex justify-end items-end mt-3">
+                                <h1 class="text-xs text-slate-400">{{project.released|timesince}}</h1>
                             </div>
-                            <h4 class="mt-2 font-semibold text-lg leading-tight">
-                                Jeddah city in red sea mall with family and friends
-                            </h4>
                         </div>
                     </div>
-                </div>
+                    </div>
+                </a>
+                {% endfor %}
             </div>
 
 

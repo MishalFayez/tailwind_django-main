@@ -14,12 +14,16 @@
     src:local('Poppins Regular'),
         local('Poppins'), 
         url({% static 'fonts/Poppins-Medium.ttf' %}) format('truetype');
-    } 
+    }
+    
 </style>
 <body style="font-family:Poppins;">
     {% block content %}
         
     {% endblock content %}
+    {% block projects %}
+        
+    {% endblock projects %}
 </body>
 
 </html>
