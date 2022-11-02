@@ -7,43 +7,46 @@
             <header class="mb-4 lg:mb-6 not-format">
                 <address class="flex items-center mb-6 not-italic">
                     <div class="inline-flex items-center mr-3 text-sm text-gray-900   ">
-                        <img class="mr-4 w-16 h-16 rounded-full" src="{{projects.author.image}}" alt="Jese Leos">
+                        <img class="mr-4 w-16 h-16 rounded-full" src="{{project.author.image.url}}" alt="Jese Leos">
                         <div>
-                            <a href="#" rel="author" class="text-xl font-bold text-gray-900   ">{{projects.author}}</a>
-                            <p class="text-base font-light text-gray-500    ">{{projects.author.position}}</p>
-                            <p class="text-base font-light text-gray-500    "><time pubdate datetime="2022-02-08" title="February 8th, 2022">Feb. 8, 2022</time></p>
+                            <a href="#" rel="author" class="text-xl font-bold text-gray-900   ">{{project.author.name}}</a>
+                            <p class="text-base font-light text-gray-500    ">{{project.author.position}}</p>
+                            <p class="text-base font-light text-gray-500    "><time pubdate datetime="2022-02-08" title="February 8th, 2022">{{project.released}}</time></p>
                         </div>
                     </div>
                 </address>
-                <h1 class="mb-4 text-3xl font-extrabold leading-tight text-gray-900 lg:mb-6 lg:text-4xl   ">{{projects.title}}</h1>
+                <h1 class="mb-4 text-3xl font-extrabold leading-tight text-gray-900 lg:mb-6 lg:text-4xl   ">{{project.title}}</h1>
             </header>
             <div  class="break-words text-gray-700">
-            <p>{{projects.body}}.</p>
+            <p>{{project.body}}.</p>
             <p>Before going digital, you might benefit from scribbling down some ideas in a sketchbook. This way,
                 you can think things through before committing to an actual design project.</p>
             <p>But then I found a <a href="https://flowbite.com">component library based on Tailwind CSS called
                     Flowbite</a>. It comes with the most commonly used UI components, such as buttons, navigation
                 bars, cards, form elements, and more which are conveniently built with the utility classes from
                 Tailwind CSS.</p>
-            <figure><img src="https://flowbite.s3.amazonaws.com/typography-plugin/typography-image-1.png" alt="">
-                <figcaption>Digital art by Anonymous</figcaption>
+            <figure><img src="{{project.feature.url}}" alt="">
             </figure>
         </div>
             <section class="not-format">
                 <div class="flex justify-between items-center mb-6">
-                    <h2 class="text-lg lg:text-2xl font-bold text-gray-900   ">Discussion (20)</h2>
+                    <h2 class="text-lg lg:text-2xl font-bold text-gray-900   ">Discussion ({{all_comments.count}})</h2>
                 </div>
-                <form class="mb-6">
-                    <div class="py-2 px-4 mb-4 bg-white rounded-lg rounded-t-lg border border-gray-200    ">
-                        <label for="comment" class="sr-only">Your comment</label>
-                        <textarea id="comment" rows="6"
-                            class="px-0 w-full text-sm text-gray-900 border-0 focus:ring-0       "
-                            placeholder="Write a comment..." required></textarea>
+                <form action="" method="post" class="flex flex-col gap-6 items-center justify-center">
+                    {% csrf_token %}
+                    <div class="flex gap-x-5 w-full">
+                        <div class="w-1/2">
+                            {{form.name}}
+                        </div>
+                        <div class="w-1/2">
+                            {{form.email}}
+                        </div>
                     </div>
-                    <button type="submit"
-                        class="inline-flex items-center py-2.5 px-4 text-xs font-medium text-center text-white bg-primary-700 rounded-lg focus:ring-4 focus:ring-primary-200 hover:bg-primary-800">
-                        Post comment
-                    </button>
+                    <div class="w-full">
+                    {{form.body}}
+                </div>
+                    <input type="submit" value="Submit" class="shadow-lg hover:shadow-2xl bg-indigo-500 text-3xl hover:bg-indigo-600
+                     text-white py-3 px-4 rounded-lg cursor-pointer transition-all">
                 </form>
                 {% for comment in all_comments %}           
                 <article class="p-6 mb-6 text-base bg-white rounded-lg  ">

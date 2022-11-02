@@ -25,7 +25,6 @@ class Category(models.Model):
 class Project(models.Model):
     title = models.CharField(max_length=255, null=True)
     type = models.ManyToManyField(Category)
-    slug = models.SlugField(null = True)
     image = models.ImageField(null = True,blank=True, upload_to="images/")
     body = models.TextField()
     author = models.ForeignKey(Info, on_delete=models.CASCADE)
@@ -66,4 +65,4 @@ class CommentProject(models.Model):
     date_added = models.DateTimeField(auto_now_add = True)
 
     class Meta:
-        ordering = ['date_added']
+        ordering = ['-date_added']

@@ -197,16 +197,16 @@
     <div class="bg-indigo-100 xl:w-1/2 w-full p-2 sm:p-10">
         <div class="flex flex-col gap-y-5 bg-white rounded shadow p-5">
             <h1 class="font-semibold text-lg">My Projects</h1>
-            <div class="flex items-center justify-center mb-6 flex-col lg:flex-row gap-x-4">
+            <div class="flex items-center justify-around mb-6 flex-col lg:flex-row gap-x-4">
                 {% for project in projects %}
-                <a href="{% url 'getProjects' project.slug %}">
-                    <div class="mb-5">
-                    <div class="pb-[55%] relative max-w-sm">
+                <a href="{% url 'getProjects' project.pk %}">
+                    <div class="mb-5 transform transition-all hover:-translate-y-2 duration-300">
+                    <div class="pb-[55%] relative">
                         <img src="{{project.image}}" alt=""
-                            class="absolute top-0 w-full h-64 object-cover rounded-lg shadow-md">
+                            class="absolute top-0 w-full h-64 object-cover rounded-lg shadow-md hover:shadow-2xl">
                     </div>
                     <div class="px-4 mt-4 relative max-w-sm">
-                        <div class="bg-white p-6 rounded-lg shadow-lg">
+                        <div class="bg-white p-6 rounded-lg shadow-lg ">
                             <div class="items-baseline">
                                 {% for type in project.type.all %}
                                 {% if type.name == 'Odoo' %}
@@ -256,12 +256,14 @@
             <div class=" w-full pt-5 pb-16 gap-4 flex-wrap flex justify-center items-center">
 
                 <!-- Card -->
-                
+                {% for project in projects %}
+                    
+
                 <div
-                    class="w-4/5 sm:w-60 p-2 bg-white rounded-xl transform transition-all hover:-tranindigo-y-2 duration-300 shadow-lg hover:shadow-2xl">
+                    class="w-4/5 sm:w-60 p-2 bg-white rounded-xl transform transition-all hover:-translate-y-2 duration-300 shadow-lg hover:shadow-2xl">
                     <!-- Image -->
                     <img class="sm:h-40 object-cover rounded-xl" h-40 object-cover rounded-xl"
-                        src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80"
+                        src="{{project.image}}"
                         alt="">
                     <div class="p-2">
                         <!-- Heading -->
@@ -277,7 +279,7 @@
                             class="text-white bg-indigo-600 px-3 py-1 rounded-md hover:bg-indigo-700">Learn More</a>
                     </div>
                 </div>
-
+                {% endfor %}
 
             </div>
 
