@@ -37,11 +37,12 @@ class Project(models.Model):
         ordering = ['-released']
 
 class Post(models.Model):
+    author = models.ForeignKey(Info, on_delete=models.CASCADE, null = True)
     title = models.CharField(max_length=255)
     slug = models.SlugField()
+    image = models.ImageField(null = True,blank=True, upload_to="images/")
     intro = models.TextField()
     body = models.TextField()
-    type = models.ForeignKey(Category, on_delete=models.CASCADE)
     released = models.DateTimeField(auto_now_add = True)
 
     class Meta:
@@ -66,3 +67,26 @@ class CommentProject(models.Model):
 
     class Meta:
         ordering = ['-date_added']
+
+class Contact(models.Model):
+    subject = models.CharField(max_length=255)
+    email = models.EmailField()
+    body = models.TextField(max_length=1000)
+
+class CompanyExp(models.Model):
+    name = models.CharField(max_length=255)
+
+    def __str__(self):
+        return self.name
+
+class Experience(models.Model):
+    person = models.ForeignKey(Info, on_delete= models.CASCADE)
+    company = models.ForeignKey(CompanyExp, on_delete = models.CASCADE)
+    title = models.CharField(max_length = 255, null = True)
+    description = models.TextField(max_length = 1000)
+    date = models.DateField(null=True)
+
+    def __str__(self):
+        return self.title
+    def get_date(self):
+        return self.strftime('%b %Y')
