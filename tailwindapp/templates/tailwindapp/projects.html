@@ -2,8 +2,8 @@
 {% load static %}
 
 <main class="pt-8 pb-16 lg:pt-16 lg:pb-24">
-    <div class="flex justify-between px-4 mx-auto max-w-screen-xl ">
-        <article class=" bg-white p- mx-auto w-full max-w-2xl format format-sm sm:format-base lg:format-lg format-blue ">
+    <div class="flex justify-between px-4 mx-auto w-3/4">
+        <article class=" bg-white p- mx-auto w-full format format-sm sm:format-base lg:format-lg format-blue ">
             <header class="mb-4 lg:mb-6 not-format">
                 <address class="flex items-center mb-6 not-italic">
                     <div class="inline-flex items-center mr-3 text-sm text-gray-900   ">
@@ -21,51 +21,49 @@
                 <figure class="flex justify-center"><img src="{{project.feature.url}}" alt="">
                 </figure>
             <p>{{project.body}}.</p>
-            <p>Before going digital, you might benefit from scribbling down some ideas in a sketchbook. This way,
-                you can think things through before committing to an actual design project.</p>
-            <p>But then I found a <a href="https://flowbite.com">component library based on Tailwind CSS called
-                    Flowbite</a>. It comes with the most commonly used UI components, such as buttons, navigation
-                bars, cards, form elements, and more which are conveniently built with the utility classes from
-                Tailwind CSS.</p>
 
         </div>
-            <section class="not-format">
-                <div class="flex justify-between items-center mb-6">
-                    <h2 class="text-lg lg:text-2xl font-bold text-gray-900   ">Discussion ({{all_comments.count}})</h2>
-                </div>
-                <form action="" method="post" class="flex flex-col gap-6 items-center justify-center">
-                    {% csrf_token %}
-                    <div class="flex gap-x-5 w-full">
-                        <div class="w-1/2">
-                            {{form.name}}
-                        </div>
-                        <div class="w-1/2">
-                            {{form.email}}
-                        </div>
+        <hr class="my-5">
+        <section class="not-format">
+            <div class="flex items-center mb-6">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 mr-3 text-gray-500">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M20.25 8.511c.884.284 1.5 1.128 1.5 2.097v4.286c0 1.136-.847 2.1-1.98 2.193-.34.027-.68.052-1.02.072v3.091l-3-3c-1.354 0-2.694-.055-4.02-.163a2.115 2.115 0 01-.825-.242m9.345-8.334a2.126 2.126 0 00-.476-.095 48.64 48.64 0 00-8.048 0c-1.131.094-1.976 1.057-1.976 2.192v4.286c0 .837.46 1.58 1.155 1.951m9.345-8.334V6.637c0-1.621-1.152-3.026-2.76-3.235A48.455 48.455 0 0011.25 3c-2.115 0-4.198.137-6.24.402-1.608.209-2.76 1.614-2.76 3.235v6.226c0 1.621 1.152 3.026 2.76 3.235.577.075 1.157.14 1.74.194V21l4.155-4.155" />
+                  </svg>                      
+                <h2 class="text-lg lg:text-2xl font-bold text-gray-700   ">Discussion ({{project.comments.count}})</h2>
+            </div>
+            <form action="" method="post" class="flex flex-col gap-6 items-center justify-center">
+                {% csrf_token %}
+                <div class="flex gap-x-5 w-full">
+                    <div class="w-1/2">
+                        {{form.name}}
                     </div>
-                    <div class="w-full">
-                    {{form.body}}
+                    <div class="w-1/2">
+                        {{form.email}}
+                    </div>
                 </div>
-                    <input type="submit" value="Submit" class="shadow-lg hover:shadow-2xl bg-indigo-500 text-3xl hover:bg-indigo-600
-                     text-white py-3 px-4 rounded-lg cursor-pointer transition-all">
-                </form>
-                {% for comment in all_comments %}           
-                <article class="p-6 mb-6 text-base bg-white rounded-lg  ">
-                    <footer class="flex justify-between items-center mb-2">
-                        <div class="flex items-center">
-                            <p class="inline-flex items-center mr-3 text-sm text-gray-900   "><img
-                                    class="mr-2 w-6 h-6 rounded-full"
-                                    src="{% static 'images/avatar.png' %}"
-                                    alt="Michael Gough">{{comment.name}}</p>
-                            <p class="text-sm text-gray-600"><time pubdate datetime="2022-02-08"
-                                    title="February 8th, 2022">{{comment.date_added}}</time></p>
-                        </div>
-                    </footer>
-                    <p>{{comment.body}}.</p>
-                </article>
-                {% endfor %}
-            </section>
-        </article>
+                <div class="w-full">
+                {{form.body}}
+            </div>
+                <input type="submit" value="Submit" class="shadow-lg hover:shadow-2xl bg-indigo-500 text-3xl hover:bg-indigo-600
+                 text-white py-3 px-4 rounded-lg cursor-pointer transition-all">
+            </form>
+            {% for comment in all_comments %}           
+            <article class="p-6 mb-6 text-base bg-white rounded-lg mt-5 ">
+                <footer class="flex justify-between items-center mb-2">
+                    <div class="flex items-center">
+                        <p class="inline-flex items-center mr-3 text-sm text-gray-700   "><img
+                                class="mr-2 w-6 h-6 rounded-full"
+                                src="{% static 'images/avatar.png' %}"
+                                alt="Michael Gough">{{comment.name}}</p>
+                        <p class="text-sm text-gray-500"><time pubdate datetime="2022-02-08"
+                                title="February 8th, 2022">{{comment.date_added}}</time></p>
+                    </div>
+                </footer>
+                <p class="">{{comment.body}}.</p>
+            </article>
+            {% endfor %}
+        </section>
+    </article>
     </div>
 </main>
   

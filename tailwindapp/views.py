@@ -12,10 +12,10 @@ def contact_send(form):
     'email': form.cleaned_data['email'],
     'message': form.cleaned_data['body']
     })
-    send_mail('Subject',
+    send_mail('Thanks for your Interest !',
     'message',
     'no-reply@mishalalfawaz.com',
-    [form.email, 'mishalalfawaz@gmail.com'],
+    [form.cleaned_data['email'], 'mishalalfawaz@gmail.com'],
     html_message=html)
 
 def index(request):
@@ -52,7 +52,7 @@ def getPosts(request, slug):
             form.post = post
             print("### ", form)
             form.save()
-            send_mail('Subject',
+            send_mail('Thank you for your comment!',
             'message',
             'no-reply@mishalalfawaz.com',
             [form.email, 'mishalalfawaz@gmail.com'],

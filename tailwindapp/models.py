@@ -1,8 +1,13 @@
 from tkinter import CASCADE
 from django.db import models
 
+class Skills(models.Model):
+    skill = models.CharField(max_length = 255)
+    percent = models.IntegerField()
 
-# Create your models here.
+    def __str__(self):
+        return self.skill + ' - ' + str(self.percent) + '%'
+
 class Info (models.Model):
     title = models.CharField(max_length = 255)
     name = models.CharField(max_length = 255)
@@ -12,9 +17,12 @@ class Info (models.Model):
     description = models.TextField(max_length = 500)
     image = models.ImageField(null = True,blank=True, upload_to="images/")
     cv = models.FileField(null = True)
+    skills = models.ManyToManyField(Skills)
 
     def __str__(self):
         return self.name
+
+
 
 class Category(models.Model):
     name = models.CharField(null = True, max_length=25)
