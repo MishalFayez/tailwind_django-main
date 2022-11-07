@@ -1,9 +1,26 @@
 {% extends 'base.html' %} {% block projects %}
 {% load static %}
-
+<div class="bg-gray-100">
 <main class="pt-8 pb-16 lg:pt-16 lg:pb-24">
-    <div class="flex justify-between px-4 mx-auto w-3/4">
-        <article class=" bg-white p- mx-auto w-full format format-sm sm:format-base lg:format-lg format-blue ">
+<nav class="flex px-5 py-3 mx-32 text-gray-700 border border-gray-200 rounded-lg bg-gray-50 " aria-label="Breadcrumb">
+  <ol class="inline-flex items-center space-x-1 md:space-x-3">
+    <li class="inline-flex items-center">
+      <a href="#" class="inline-flex items-center text-sm font-medium text-gray-700 hover:text-gray-900">
+        <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z"></path></svg>
+        Home
+      </a>
+    </li>
+    <li aria-current="page">
+      <div class="flex items-center">
+        <svg class="w-6 h-6 text-gray-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path></svg>
+        <span class="ml-1 text-sm font-medium text-gray-500 md:ml-2 ">Flowbite</span>
+      </div>
+    </li>
+  </ol>
+</nav>
+
+    <div class=" bg-gray-50 flex justify-between px-4 mx-auto w-3/4 border-4 rounded-lg p-3">
+        <article class=" p- mx-auto w-full format format-sm sm:format-base lg:format-lg format-blue ">
             <header class="mb-4 lg:mb-6 not-format">
                 <address class="flex items-center mb-6 not-italic">
                     <div class="inline-flex items-center mr-3 text-sm text-gray-900   ">
@@ -47,6 +64,7 @@
                 <input type="submit" value="Submit" class="shadow-lg hover:shadow-2xl bg-indigo-500 text-3xl hover:bg-indigo-600
                  text-white py-3 px-4 rounded-lg cursor-pointer transition-all">
             </form>
+            <hr class="mt-3">
             {% for comment in all_comments %}           
             <article class="p-6 mb-6 text-base bg-white rounded-lg mt-5 ">
                 <footer class="flex justify-between items-center mb-2">
@@ -61,10 +79,11 @@
                 </footer>
                 <p class="">{{comment.body}}.</p>
             </article>
+            <hr>
             {% endfor %}
         </section>
     </article>
     </div>
 </main>
-  
+</div>
 {% endblock projects %}
