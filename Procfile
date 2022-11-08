@@ -1,1 +1,1 @@
-web: gunicorn tailwindproject.wgsi:tailwindproject --log-file -
+web: gunicorn tailwindproject.wsgi --log-file -
