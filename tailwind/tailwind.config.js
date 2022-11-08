@@ -30,9 +30,9 @@ module.exports = {
 
       // }
 
-      '50%': {opacity: '0.5'},
+      '70%': {opacity: '0.5'},
 
-      '15%': {transform:'scale(2)'}
+      '15%': {transform:'scale(2.5)'}
 
       }
 
@@ -46,5 +46,7 @@ module.exports = {
 
     },
   },
-  plugins: [],
+  plugins: [
+    require("tailwindcss-animation-delay"),
+  ],
 }

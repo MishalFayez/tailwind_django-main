@@ -7,5 +7,8 @@
   "scripts": {
     "dev": "npx tailwindcss -i ./global.css -o ../dist/css/tailwind.css --watch",
     "build": "npx tailwindcss -i ./global.css -o ../dist/css/tailwind.css --minify"
+  },
+  "dependencies": {
+    "tailwindcss-animation-delay": "^1.0.7"
   }
 }
