@@ -1,1 +1,1 @@
-web: gunicorn tailwindproject.wgsi --log-file -
+web: gunicorn tailwindproject.wgsi.py --log-file -
