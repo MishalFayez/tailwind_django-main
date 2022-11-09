@@ -32,7 +32,7 @@ module.exports = {
 
       '70%': {opacity: '0.5'},
 
-      '15%': {transform:'scale(2.5)'}
+      '15%': {transform:'scale(2)'}
 
       }
 

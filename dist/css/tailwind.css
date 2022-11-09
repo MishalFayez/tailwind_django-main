@@ -742,6 +742,14 @@ video {
   height: 4rem;
 }
 
+.h-\[18rem\] {
+  height: 18rem;
+}
+
+.h-\[19rem\] {
+  height: 19rem;
+}
+
 .min-h-screen {
   min-height: 100vh;
 }
@@ -804,6 +812,18 @@ video {
 
 .w-24 {
   width: 6rem;
+}
+
+.w-\[18rem\] {
+  width: 18rem;
+}
+
+.w-\[1rem\] {
+  width: 1rem;
+}
+
+.w-\[19rem\] {
+  width: 19rem;
 }
 
 .max-w-sm {
@@ -1485,6 +1505,16 @@ video {
 
   .sm\:text-left {
     text-align: left;
+  }
+
+  .sm\:text-5xl {
+    font-size: 3rem;
+    line-height: 1;
+  }
+
+  .sm\:text-4xl {
+    font-size: 2.25rem;
+    line-height: 2.5rem;
   }
 }
 
