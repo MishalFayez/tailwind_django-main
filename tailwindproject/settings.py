@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'tailwindapp',
     "django_browser_reload",
     'django_extensions',
+    'ckeditor'
 ]
 
 MIDDLEWARE = [

@@ -1,5 +1,5 @@
 from django.db import models
-
+from ckeditor.fields import RichTextField
 class Skills(models.Model):
     skill = models.CharField(max_length = 255)
     percent = models.IntegerField()
@@ -33,7 +33,7 @@ class Project(models.Model):
     title = models.CharField(max_length=255, null=True)
     type = models.ManyToManyField(Category)
     image = models.ImageField(null = True,blank=True, upload_to="images/")
-    body = models.TextField()
+    body = RichTextField()
     author = models.ForeignKey(Info, on_delete=models.CASCADE)
     feature = models.ImageField(null = True,blank=True, upload_to="images/")
     released = models.DateTimeField(auto_now_add=True)
@@ -41,7 +41,7 @@ class Project(models.Model):
         return self.title
 
     class Meta:
-        ordering = ['-released']
+        ordering = ['released']
 
 class Post(models.Model):
     author = models.ForeignKey(Info, on_delete=models.CASCADE, null = True)
@@ -49,11 +49,13 @@ class Post(models.Model):
     slug = models.SlugField()
     image = models.ImageField(null = True,blank=True, upload_to="images/")
     intro = models.TextField()
-    body = models.TextField()
+    body = RichTextField()
     released = models.DateTimeField(auto_now_add = True)
 
+    def __str__(self):
+        return self.title
     class Meta:
-        ordering = ['-released']
+        ordering = ['released']
 
 class CommentPost(models.Model):
     post = models.ForeignKey(Post, related_name='comments', on_delete=models.CASCADE)

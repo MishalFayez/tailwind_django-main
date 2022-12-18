@@ -215,7 +215,7 @@
         </div>
         <hr>
       <div
-        class="flex items-center justify-around mb-6 flex-col lg:flex-row gap-x-4"
+        class="grid items-center justify-around mb-6 lg:grid-cols-2 lg:grid-row gap-x-4"
       >
         {% for project in projects %}
         <a href="{% url 'getProjects' project.pk %}">
@@ -258,6 +258,12 @@
                     {{type.name}}
                   </span>
                   {% elif type.name == 'Cybersecurity' %}
+                  <span
+                    class="inline-block text-sm px-2 rounded-full bg-sky-200 text-sky-800"
+                  >
+                    {{type.name}}
+                  </span>
+                  {% elif type.name == 'SQL' %}
                   <span
                     class="inline-block text-sm px-2 rounded-full bg-sky-200 text-sky-800"
                   >
@@ -307,7 +313,7 @@
             <!-- Heading -->
             <h2 class="font-bold text-lg mb-2 text-gray-700">{{post.title}}</h2>
             <!-- Description -->
-            <p class="text-sm text-gray-500">
+            <p dir="rtl" class=" text-center text-sm text-gray-500">
               {{post.intro}}
             </p>
           </div>
